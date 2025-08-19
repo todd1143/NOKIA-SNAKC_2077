@@ -9,9 +9,9 @@
 
 ### 🎮 A Cyberpunk Snake Game with Procedural Music & Neon Aesthetics
 
-[Play Now](https://your-username.github.io/nokia-snakc-2077) | [中文文档](README_CN.md) | [Report Bug](https://github.com/your-username/nokia-snakc-2077/issues) | [Request Feature](https://github.com/your-username/nokia-snakc-2077/issues)
+[Play Now](https://nokia-snack2077.replit.app) | [中文文档](README_CN.md) | [Report Bug](https://github.com/todd1143/NOKIA-SNACK_2077/issues) | [Request Feature](https://github.com/todd1143/NOKIA-SNACK_2077/issues)
 
-<img src="https://github.com/your-username/nokia-snakc-2077/assets/your-id/demo.gif" width="600" alt="Game Demo" />
+<!-- <img src="https://github.com/todd1143/NOKIA-SNACK_2077/assets/your-id/demo.gif" width="600" alt="Game Demo" /> -->
 
 </div>
 
@@ -54,14 +54,14 @@
 # Fork this repository
 # Go to Settings > Pages
 # Select "Deploy from branch" > main > / (root)
-# Your game will be live at https://[username].github.io/nokia-snakc-2077
+# Your game will be live at https://[username].github.io/NOKIA-SNACK_2077
 ```
 
 ### **Option 2: Local Development**
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/nokia-snakc-2077.git
-cd nokia-snakc-2077
+git clone https://github.com/todd1143/NOKIA-SNACK_2077.git
+cd NOKIA-SNACK_2077
 
 # Start with Python (no dependencies needed!)
 python3 -m http.server 8000
@@ -75,7 +75,7 @@ open http://localhost:8000
 ```
 
 ### **Option 3: Deploy to Replit**
-[![Run on Replit](https://replit.com/badge/github/your-username/nokia-snakc-2077)](https://replit.com/github/your-username/nokia-snakc-2077)
+[![Run on Replit](https://replit.com/badge/github/todd1143/NOKIA-SNACK_2077)](https://replit.com/github/todd1143/NOKIA-SNACK_2077)
 
 ---
 
@@ -294,9 +294,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📬 Contact
 
-**Todd** - [GitHub Profile](https://github.com/your-username)
+**Todd** - [GitHub Profile](https://github.com/todd1143)
 
-Project Link: [https://github.com/your-username/nokia-snakc-2077](https://github.com/your-username/nokia-snakc-2077)
+Project Link: [https://github.com/todd1143/NOKIA-SNACK_2077](https://github.com/todd1143/NOKIA-SNACK_2077)
 
 ---
 
@@ -304,9 +304,9 @@ Project Link: [https://github.com/your-username/nokia-snakc-2077](https://github
 
 ### 🌟 Star this repo if you enjoyed the game!
 
-<img src="https://img.shields.io/github/stars/your-username/nokia-snakc-2077?style=social" />
-<img src="https://img.shields.io/github/forks/your-username/nokia-snakc-2077?style=social" />
-<img src="https://img.shields.io/github/watchers/your-username/nokia-snakc-2077?style=social" />
+<img src="https://img.shields.io/github/stars/todd1143/NOKIA-SNACK_2077?style=social" />
+<img src="https://img.shields.io/github/forks/todd1143/NOKIA-SNACK_2077?style=social" />
+<img src="https://img.shields.io/github/watchers/todd1143/NOKIA-SNACK_2077?style=social" />
 
 **Made with 💜 and ⚡ by Todd**
 
