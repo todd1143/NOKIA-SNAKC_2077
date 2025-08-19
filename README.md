@@ -11,14 +11,14 @@
 
 [Play Now](https://nokia-snack2077.replit.app) | [中文文档](README_CN.md) | [Report Bug](https://github.com/todd1143/NOKIA-SNACK_2077/issues) | [Request Feature](https://github.com/todd1143/NOKIA-SNACK_2077/issues)
 
-<!-- <img src="https://github.com/todd1143/NOKIA-SNACK_2077/assets/your-id/demo.gif" width="600" alt="Game Demo" /> -->
+<img src="assets/images/screenshots/ScreenRecording2025-08-20at2.12.31AM-ezgif.com-video-to-gif-converter.gif" width="600" alt="Game Demo" />
 
 </div>
 
 ---
 
 ## ✨ Features
-assets/images/screenshots/ScreenRecording2025-08-20at2.12.31AM-ezgif.com-video-to-gif-converter.gif
+
 ### 🎨 **Cyberpunk Visuals**
 - **Flowing Neon Title** - Dynamic light strip effect mimicking snake movement
 - **Gradient Neon Effects** - Multi-layered glow with animated color transitions
