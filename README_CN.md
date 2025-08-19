@@ -11,7 +11,7 @@
 
 [立即游玩](https://nokia-snack2077.replit.app) | [English](README.md) | [报告问题](https://github.com/todd1143/NOKIA-SNACK_2077/issues) | [功能请求](https://github.com/todd1143/NOKIA-SNACK_2077/issues)
 
-<!-- <img src="https://github.com/todd1143/NOKIA-SNACK_2077/assets/your-id/demo.gif" width="600" alt="游戏演示" /> -->
+<img src="assets/images/screenshots/ScreenRecording2025-08-20at2.12.31AM-ezgif.com-video-to-gif-converter.gif" width="600" alt="游戏演示" />
 
 </div>
 
