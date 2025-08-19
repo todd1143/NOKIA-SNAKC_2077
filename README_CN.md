@@ -9,9 +9,9 @@
 
 ### 🎮 赛博朋克贪吃蛇游戏 - 程序化音乐与霓虹美学
 
-[立即游玩](https://your-username.github.io/nokia-snakc-2077) | [English](README.md) | [报告问题](https://github.com/your-username/nokia-snakc-2077/issues) | [功能请求](https://github.com/your-username/nokia-snakc-2077/issues)
+[立即游玩](https://nokia-snack2077.replit.app) | [English](README.md) | [报告问题](https://github.com/todd1143/NOKIA-SNACK_2077/issues) | [功能请求](https://github.com/todd1143/NOKIA-SNACK_2077/issues)
 
-<img src="https://github.com/your-username/nokia-snakc-2077/assets/your-id/demo.gif" width="600" alt="游戏演示" />
+<!-- <img src="https://github.com/todd1143/NOKIA-SNACK_2077/assets/your-id/demo.gif" width="600" alt="游戏演示" /> -->
 
 </div>
 
@@ -54,14 +54,14 @@
 # Fork这个仓库
 # 进入Settings > Pages
 # 选择"Deploy from branch" > main > / (root)
-# 你的游戏将在 https://[用户名].github.io/nokia-snakc-2077 上线
+# 你的游戏将在 https://[用户名].github.io/NOKIA-SNACK_2077 上线
 ```
 
 ### **方式2：本地开发**
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/nokia-snakc-2077.git
-cd nokia-snakc-2077
+git clone https://github.com/todd1143/NOKIA-SNACK_2077.git
+cd NOKIA-SNACK_2077
 
 # 使用Python启动（无需安装依赖！）
 python3 -m http.server 8000
@@ -75,7 +75,7 @@ open http://localhost:8000
 ```
 
 ### **方式3：部署到Replit**
-[![在Replit运行](https://replit.com/badge/github/your-username/nokia-snakc-2077)](https://replit.com/github/your-username/nokia-snakc-2077)
+[![在Replit运行](https://replit.com/badge/github/todd1143/NOKIA-SNACK_2077)](https://replit.com/github/todd1143/NOKIA-SNACK_2077)
 
 ---
 
@@ -294,9 +294,9 @@ LeaderboardManager.clearLeaderboard();
 
 ## 📬 联系方式
 
-**Todd** - [GitHub主页](https://github.com/your-username)
+**Todd** - [GitHub主页](https://github.com/todd1143)
 
-项目链接：[https://github.com/your-username/nokia-snakc-2077](https://github.com/your-username/nokia-snakc-2077)
+项目链接：[https://github.com/todd1143/NOKIA-SNACK_2077](https://github.com/todd1143/NOKIA-SNACK_2077)
 
 ---
 
@@ -304,9 +304,9 @@ LeaderboardManager.clearLeaderboard();
 
 ### 🌟 如果您喜欢这个游戏，请给这个仓库点星！
 
-<img src="https://img.shields.io/github/stars/your-username/nokia-snakc-2077?style=social" />
-<img src="https://img.shields.io/github/forks/your-username/nokia-snakc-2077?style=social" />
-<img src="https://img.shields.io/github/watchers/your-username/nokia-snakc-2077?style=social" />
+<img src="https://img.shields.io/github/stars/todd1143/NOKIA-SNACK_2077?style=social" />
+<img src="https://img.shields.io/github/forks/todd1143/NOKIA-SNACK_2077?style=social" />
+<img src="https://img.shields.io/github/watchers/todd1143/NOKIA-SNACK_2077?style=social" />
 
 **用 💜 和 ⚡ 制作 by Todd**
 
