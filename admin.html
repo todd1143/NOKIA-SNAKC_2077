@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - NOKIA*SNAKC_2077</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00fff0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #00fff0;
+        }
+        .data-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #1a1a1a;
+            border-radius: 5px;
+            border-left: 3px solid #00fff0;
+        }
+        .key {
+            color: #ff00b8;
+            font-weight: bold;
+        }
+        .value {
+            color: #00fff0;
+        }
+        button {
+            background: #1a0a2a;
+            color: #00fff0;
+            border: 1px solid #00fff0;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #2a1a3a;
+        }
+        .warning {
+            color: #ff6b6b;
+            background: #2a1a1a;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ NOKIA*SNAKC_2077 - Admin Panel</h1>
+        
+        <div class="data-section">
+            <h2>📊 Player Statistics</h2>
+            <div id="playerStats">Loading...</div>
+        </div>
+
+        <div class="data-section">
+            <h2>🏆 Leaderboard Data</h2>
+            <div id="leaderboard">Loading...</div>
+        </div>
+
+        <div class="data-section">
+            <h2>👤 Player Profile</h2>
+            <div id="playerInfo">Loading...</div>
+        </div>
+
+        <div class="data-section">
+            <h2>🔧 Data Management</h2>
+            <button onclick="exportData()">📤 Export Data</button>
+            <button onclick="clearAllData()" style="background: #2a0a0a; border-color: #ff6b6b; color: #ff6b6b;">🗑️ Clear All Data</button>
+            <div class="warning">
+                ⚠️ Warning: Data cannot be recovered after deletion! Please export backup first.
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h2>💾 Storage Information</h2>
+            <p>Your game data is stored in:</p>
+            <ul>
+                <li><span class="key">Location:</span> Browser localStorage</li>
+                <li><span class="key">Persistence:</span> Permanent unless manually cleared</li>
+                <li><span class="key">Scope:</span> Current browser and device only</li>
+                <li><span class="key">Size:</span> Approximately <span id="dataSize">Calculating...</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Load game data
+        function loadGameData() {
+            // Player statistics
+            const playerStats = JSON.parse(localStorage.getItem('cyber-snake-player-stats') || '{"gamesPlayed":0,"totalScore":0,"avgScore":0}');
+            document.getElementById('playerStats').innerHTML = `
+                <div><span class="key">Games Played:</span><span class="value">${playerStats.gamesPlayed}</span></div>
+                <div><span class="key">Total Score:</span><span class="value">${playerStats.totalScore}</span></div>
+                <div><span class="key">Average Score:</span><span class="value">${playerStats.avgScore}</span></div>
+            `;
+
+            // Leaderboard data
+            const leaderboard = JSON.parse(localStorage.getItem('cyber-snake-leaderboard') || '[]');
+            document.getElementById('leaderboard').innerHTML = `
+                <div><span class="key">Total Records:</span><span class="value">${leaderboard.length}</span></div>
+                <div><span class="key">Highest Score:</span><span class="value">${leaderboard.length > 0 ? Math.max(...leaderboard.map(l => l.score)) : 0}</span></div>
+            `;
+
+            // Player profile
+            const playerName = localStorage.getItem('cyber-snake-name') || 'Player';
+            const bestScore = localStorage.getItem('cyber-snake-best') || '0';
+            document.getElementById('playerInfo').innerHTML = `
+                <div><span class="key">Player Name:</span><span class="value">${playerName}</span></div>
+                <div><span class="key">Personal Best:</span><span class="value">${bestScore}</span></div>
+            `;
+
+            // Calculate data size
+            const allData = {
+                playerStats,
+                leaderboard,
+                playerName,
+                bestScore
+            };
+            const dataSize = new Blob([JSON.stringify(allData)]).size;
+            document.getElementById('dataSize').textContent = `${dataSize} bytes`;
+        }
+
+        function exportData() {
+            const allData = {
+                playerStats: JSON.parse(localStorage.getItem('cyber-snake-player-stats') || '{}'),
+                leaderboard: JSON.parse(localStorage.getItem('cyber-snake-leaderboard') || '[]'),
+                playerName: localStorage.getItem('cyber-snake-name'),
+                bestScore: localStorage.getItem('cyber-snake-best'),
+                exportDate: new Date().toISOString()
+            };
+
+            const dataStr = JSON.stringify(allData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `nokia-snakc-2077-backup-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            
+            URL.revokeObjectURL(url);
+            alert('Data exported successfully!');
+        }
+
+        function clearAllData() {
+            if (confirm('Are you sure you want to clear all game data? This action cannot be undone!')) {
+                if (confirm('Final confirmation: This will delete all your game records, statistics, and leaderboard data!')) {
+                    localStorage.removeItem('cyber-snake-player-stats');
+                    localStorage.removeItem('cyber-snake-leaderboard');
+                    localStorage.removeItem('cyber-snake-name');
+                    localStorage.removeItem('cyber-snake-best');
+                    alert('All data has been cleared!');
+                    loadGameData();
+                }
+            }
+        }
+
+        // Load data on page load
+        loadGameData();
+    </script>
+</body>
+</html>

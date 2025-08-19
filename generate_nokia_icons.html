@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NOKIA N-Snake Icons Generator - NOKIA*SNAKC_2077</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00fff0;
+            padding: 20px;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .icon-card {
+            border: 2px solid #333;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            background: rgba(26, 10, 42, 0.3);
+            border: 1px solid rgba(0,255,240,.2);
+        }
+        .icon-card h3 {
+            color: #ff00b8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        canvas {
+            border: 1px solid #555;
+            margin: 10px 5px;
+            background: #0a0a0a;
+            border-radius: 8px;
+        }
+        button {
+            background: #1a0a2a;
+            color: #00fff0;
+            border: 1px solid #00fff0;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 3px;
+            font-size: 11px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #2a1a3a;
+            box-shadow: 0 0 8px #00fff0;
+        }
+        .generate-all {
+            background: linear-gradient(135deg, #00fff0, #ff00b8);
+            color: #000;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 12px 24px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🅝 NOKIA N-Snake Icons</h1>
+    <p>N形状蛇图标生成器 - 致敬经典NOKIA贪吃蛇</p>
+    
+    <button class="generate-all" onclick="generateAllIcons()">🎨 Generate All Icons</button>
+    
+    <div class="icon-grid">
+        <div class="icon-card">
+            <h3>🅝 NOKIA N-Snake Icons</h3>
+            <div>
+                <canvas id="game32" width="32" height="32"></canvas>
+                <canvas id="game64" width="64" height="64"></canvas>
+                <canvas id="game128" width="128" height="128"></canvas>
+            </div>
+            <div>
+                <button onclick="downloadCanvas('game32', 'nokia-n-snake-32.png')">32px</button>
+                <button onclick="downloadCanvas('game64', 'nokia-n-snake-64.png')">64px</button>
+                <button onclick="downloadCanvas('game128', 'nokia-n-snake-128.png')">128px</button>
+            </div>
+        </div>
+        
+        <div class="icon-card">
+            <h3>📱 App Icons</h3>
+            <div>
+                <canvas id="app180" width="180" height="180"></canvas>
+                <canvas id="app192" width="192" height="192"></canvas>
+            </div>
+            <div>
+                <button onclick="downloadCanvas('app180', 'nokia-apple-touch-icon-180.png')">Apple 180px</button>
+                <button onclick="downloadCanvas('app192', 'nokia-android-chrome-192.png')">Android 192px</button>
+            </div>
+        </div>
+        
+        <div class="icon-card">
+            <h3>🌐 Favicon</h3>
+            <div>
+                <canvas id="fav16" width="16" height="16"></canvas>
+                <canvas id="fav32" width="32" height="32"></canvas>
+            </div>
+            <div>
+                <button onclick="downloadCanvas('fav16', 'nokia-favicon-16x16.png')">16px</button>
+                <button onclick="downloadCanvas('fav32', 'nokia-favicon-32x32.png')">32px</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 完全复制游戏中的 roundRect 函数
+        function roundRect(ctx, x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y, x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x, y + h, r);
+            ctx.arcTo(x, y + h, x, y, r);
+            ctx.arcTo(x, y, x + w, y, r);
+            ctx.closePath();
+        }
+        
+        // 完全复制游戏中的 neonRect 函数
+        function neonRect(ctx, x, y, w, h, color, stroke) {
+            const r = Math.min(w, h) * 0.25;
+            const grd = ctx.createLinearGradient(x, y, x + w, y + h);
+            grd.addColorStop(0, color);
+            grd.addColorStop(1, color); // 移除白色，保持纯色
+            ctx.fillStyle = grd;
+            ctx.shadowColor = color;
+            ctx.shadowBlur = 14;
+            roundRect(ctx, x + 2, y + 2, w - 4, h - 4, r);
+            ctx.fill();
+            if (stroke) {
+                ctx.shadowBlur = 24;
+                ctx.strokeStyle = stroke;
+                ctx.lineWidth = 1.8;
+                roundRect(ctx, x + 2, y + 2, w - 4, h - 4, r);
+                ctx.stroke();
+            }
+        }
+        
+        function drawGameStyleIcon(canvas) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            
+            // 清空画布
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, size, size);
+            
+            // 计算比例
+            const scale = size / 64;
+            const cellSize = Math.max(6, 10 * scale);
+            const borderWidth = Math.max(1, 2 * scale);
+            const borderRadius = Math.max(6, 12 * scale);
+            
+            // 绘制游戏边框 - 模仿 .frame
+            const frameGradient = ctx.createLinearGradient(0, 0, size, size);
+            frameGradient.addColorStop(0, 'rgba(0,255,240,0.5)');
+            frameGradient.addColorStop(1, 'rgba(180,0,255,0.5)');
+            
+            ctx.strokeStyle = frameGradient;
+            ctx.lineWidth = borderWidth;
+            roundRect(ctx, borderWidth/2, borderWidth/2, size - borderWidth, size - borderWidth, borderRadius);
+            ctx.stroke();
+            
+            // 内边框背景
+            const innerPadding = Math.max(2, 4 * scale);
+            ctx.fillStyle = '#0a0a0a';
+            roundRect(ctx, innerPadding, innerPadding, size - innerPadding*2, size - innerPadding*2, borderRadius - 2);
+            ctx.fill();
+            
+            // 重置阴影
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            
+            // N形状蛇身体段位置
+            const segments = [
+                // 左竖线 (尾部开始)
+                { x: 12 * scale, y: 46 * scale, hue: 240 },
+                { x: 12 * scale, y: 36 * scale, hue: 240 },
+                { x: 12 * scale, y: 26 * scale, hue: 280 },
+                { x: 12 * scale, y: 16 * scale, hue: 280 },
+                // 对角线 (中部)
+                { x: 22 * scale, y: 36 * scale, hue: 280 },
+                { x: 32 * scale, y: 26 * scale, hue: 320 },
+                // 右竖线 (头部)
+                { x: 44 * scale, y: 16 * scale, hue: 320 },
+                { x: 44 * scale, y: 26 * scale, hue: 320 },
+                { x: 44 * scale, y: 36 * scale, hue: 320 },
+                { x: 44 * scale, y: 46 * scale, hue: 320 }
+            ];
+            
+            // 绘制N形状蛇身体段
+            segments.forEach((seg, i) => {
+                const color = `hsl(${seg.hue},100%,55%)`;
+                neonRect(ctx, seg.x, seg.y, cellSize * 0.8, cellSize * 0.8, color);
+                
+                // 绘制蛇头眼睛 - 在右上角第一个头部段
+                if (i === 6) { // 右上角头部
+                    ctx.shadowBlur = 0;
+                    ctx.fillStyle = 'rgba(0,0,0,0.35)';
+                    const eyeWidth = cellSize * 0.4;
+                    const eyeHeight = cellSize * 0.1;
+                    const eyeX = seg.x + cellSize * 0.2;
+                    const eyeY = seg.y + cellSize * 0.25;
+                    ctx.fillRect(eyeX, eyeY, eyeWidth, eyeHeight);
+                }
+            });
+        }
+        
+        function generateAllIcons() {
+            const canvases = [
+                'game32', 'game64', 'game128', 
+                'app180', 'app192', 
+                'fav16', 'fav32'
+            ];
+            
+            canvases.forEach(id => {
+                const canvas = document.getElementById(id);
+                if (canvas) {
+                    drawGameStyleIcon(canvas);
+                }
+            });
+        }
+        
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // 页面加载时自动生成图标
+        window.onload = generateAllIcons;
+    </script>
+</body>
+</html>

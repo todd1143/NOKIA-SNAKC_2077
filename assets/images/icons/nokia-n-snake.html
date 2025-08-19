@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NOKIA N-Snake Icon - NOKIA*SNAKC_2077</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* NOKIA N形状蛇图标 */
+        .nokia-n-snake-icon {
+            width: 64px;
+            height: 64px;
+            position: relative;
+            display: inline-block;
+            
+            /* 模仿游戏中的 .frame 边框 */
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(120deg, rgba(0,255,240,.5), rgba(180,0,255,.5));
+        }
+        
+        .nokia-n-snake-icon::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: #0a0a0a;
+            border-radius: 10px;
+            z-index: 1;
+        }
+        
+        /* N形状蛇身体段 */
+        .snake-segment {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            z-index: 2;
+        }
+        
+        /* 尾部颜色 - hsl(240, 100%, 55%) */
+        .segment-tail {
+            background: linear-gradient(135deg, hsl(240,100%,65%) 0%, hsl(240,100%,45%) 100%);
+            box-shadow: 0 0 14px hsl(240,100%,55%);
+        }
+        
+        /* 中部颜色 - hsl(280, 100%, 55%) */
+        .segment-body {
+            background: linear-gradient(135deg, hsl(280,100%,65%) 0%, hsl(280,100%,45%) 100%);
+            box-shadow: 0 0 14px hsl(280,100%,55%);
+        }
+        
+        /* 头部颜色 - hsl(320, 100%, 55%) */
+        .segment-head {
+            background: linear-gradient(135deg, hsl(320,100%,65%) 0%, hsl(320,100%,45%) 100%);
+            box-shadow: 0 0 14px hsl(320,100%,55%);
+            position: relative;
+        }
+        
+        /* N形状布局 - 左竖线 */
+        .n-left-1 { left: 12px; top: 46px; }
+        .n-left-2 { left: 12px; top: 36px; }
+        .n-left-3 { left: 12px; top: 26px; }
+        .n-left-4 { left: 12px; top: 16px; }
+        
+        /* N形状布局 - 对角线 */
+        .n-diag-1 { left: 22px; top: 36px; }
+        .n-diag-2 { left: 32px; top: 26px; }
+        
+        /* N形状布局 - 右竖线 */
+        .n-right-1 { left: 44px; top: 16px; }
+        .n-right-2 { left: 44px; top: 26px; }
+        .n-right-3 { left: 44px; top: 36px; }
+        .n-right-4 { left: 44px; top: 46px; }
+        
+        /* 蛇眼睛 - 在右上角头部 */
+        .segment-head::after {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 2.5px;
+            width: 4px;
+            height: 1px;
+            background: rgba(0,0,0,0.35);
+            border-radius: 0.5px;
+        }
+        
+        /* 不同尺寸 */
+        .nokia-n-snake-icon.small {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .nokia-n-snake-icon.small .snake-segment {
+            width: 4px;
+            height: 4px;
+            border-radius: 1px;
+        }
+        
+        .nokia-n-snake-icon.small .n-left-1 { left: 6px; top: 23px; }
+        .nokia-n-snake-icon.small .n-left-2 { left: 6px; top: 18px; }
+        .nokia-n-snake-icon.small .n-left-3 { left: 6px; top: 13px; }
+        .nokia-n-snake-icon.small .n-left-4 { left: 6px; top: 8px; }
+        .nokia-n-snake-icon.small .n-diag-1 { left: 11px; top: 18px; }
+        .nokia-n-snake-icon.small .n-diag-2 { left: 16px; top: 13px; }
+        .nokia-n-snake-icon.small .n-right-1 { left: 22px; top: 8px; }
+        .nokia-n-snake-icon.small .n-right-2 { left: 22px; top: 13px; }
+        .nokia-n-snake-icon.small .n-right-3 { left: 22px; top: 18px; }
+        .nokia-n-snake-icon.small .n-right-4 { left: 22px; top: 23px; }
+        
+        .nokia-n-snake-icon.small .segment-head::after {
+            left: 1px;
+            top: 1px;
+            width: 2px;
+            height: 0.5px;
+        }
+        
+        .nokia-n-snake-icon.large {
+            width: 128px;
+            height: 128px;
+            border-radius: 24px;
+            padding: 4px;
+        }
+        
+        .nokia-n-snake-icon.large::before {
+            border-radius: 20px;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+        }
+        
+        .nokia-n-snake-icon.large .snake-segment {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+        
+        .nokia-n-snake-icon.large .n-left-1 { left: 24px; top: 92px; }
+        .nokia-n-snake-icon.large .n-left-2 { left: 24px; top: 72px; }
+        .nokia-n-snake-icon.large .n-left-3 { left: 24px; top: 52px; }
+        .nokia-n-snake-icon.large .n-left-4 { left: 24px; top: 32px; }
+        .nokia-n-snake-icon.large .n-diag-1 { left: 44px; top: 72px; }
+        .nokia-n-snake-icon.large .n-diag-2 { left: 64px; top: 52px; }
+        .nokia-n-snake-icon.large .n-right-1 { left: 88px; top: 32px; }
+        .nokia-n-snake-icon.large .n-right-2 { left: 88px; top: 52px; }
+        .nokia-n-snake-icon.large .n-right-3 { left: 88px; top: 72px; }
+        .nokia-n-snake-icon.large .n-right-4 { left: 88px; top: 92px; }
+        
+        .nokia-n-snake-icon.large .segment-head::after {
+            left: 4px;
+            top: 4px;
+            width: 8px;
+            height: 2px;
+            border-radius: 1px;
+        }
+        
+        /* 展示标签 */
+        .demo-container {
+            text-align: center;
+            color: #00fff0;
+        }
+        
+        .demo-container h3 {
+            margin: 15px 0 5px 0;
+            font-size: 14px;
+            color: #ff00b8;
+        }
+        
+        .demo-container p {
+            margin: 5px 0;
+            font-size: 11px;
+            color: #a1a1aa;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h3>Small (32px)</h3>
+        <div class="nokia-n-snake-icon small">
+            <!-- N形状的蛇 - 左竖线 -->
+            <div class="snake-segment segment-tail n-left-1"></div>
+            <div class="snake-segment segment-tail n-left-2"></div>
+            <div class="snake-segment segment-body n-left-3"></div>
+            <div class="snake-segment segment-body n-left-4"></div>
+            <!-- 对角线 -->
+            <div class="snake-segment segment-body n-diag-1"></div>
+            <div class="snake-segment segment-head n-diag-2"></div>
+            <!-- 右竖线 -->
+            <div class="snake-segment segment-head n-right-1"></div>
+            <div class="snake-segment segment-head n-right-2"></div>
+            <div class="snake-segment segment-head n-right-3"></div>
+            <div class="snake-segment segment-head n-right-4"></div>
+        </div>
+        <p>N形状蛇图标</p>
+    </div>
+    
+    <div class="demo-container">
+        <h3>Normal (64px)</h3>
+        <div class="nokia-n-snake-icon">
+            <!-- N形状的蛇 - 左竖线 -->
+            <div class="snake-segment segment-tail n-left-1"></div>
+            <div class="snake-segment segment-tail n-left-2"></div>
+            <div class="snake-segment segment-body n-left-3"></div>
+            <div class="snake-segment segment-body n-left-4"></div>
+            <!-- 对角线 -->
+            <div class="snake-segment segment-body n-diag-1"></div>
+            <div class="snake-segment segment-head n-diag-2"></div>
+            <!-- 右竖线 -->
+            <div class="snake-segment segment-head n-right-1"></div>
+            <div class="snake-segment segment-head n-right-2"></div>
+            <div class="snake-segment segment-head n-right-3"></div>
+            <div class="snake-segment segment-head n-right-4"></div>
+        </div>
+        <p>NOKIA*SNAKC风格</p>
+    </div>
+    
+    <div class="demo-container">
+        <h3>Large (128px)</h3>
+        <div class="nokia-n-snake-icon large">
+            <!-- N形状的蛇 - 左竖线 -->
+            <div class="snake-segment segment-tail n-left-1"></div>
+            <div class="snake-segment segment-tail n-left-2"></div>
+            <div class="snake-segment segment-body n-left-3"></div>
+            <div class="snake-segment segment-body n-left-4"></div>
+            <!-- 对角线 -->
+            <div class="snake-segment segment-body n-diag-1"></div>
+            <div class="snake-segment segment-head n-diag-2"></div>
+            <!-- 右竖线 -->
+            <div class="snake-segment segment-head n-right-1"></div>
+            <div class="snake-segment segment-head n-right-2"></div>
+            <div class="snake-segment segment-head n-right-3"></div>
+            <div class="snake-segment segment-head n-right-4"></div>
+        </div>
+        <p>品牌识别度更高</p>
+    </div>
+    
+    <!-- 使用方法说明 -->
+    <div style="position: fixed; bottom: 20px; left: 20px; color: #a1a1aa; font-family: monospace; font-size: 12px; max-width: 300px;">
+        <strong>🅝 NOKIA N-Snake Icon:</strong><br>
+        • N形状设计致敬NOKIA品牌<br>
+        • 完全匹配游戏渲染风格<br>
+        • 霓虹发光效果 (neonRect)<br>
+        • 渐变色彩 (hsl(240-320))<br><br>
+        <strong>HTML:</strong><br>
+        &lt;div class="nokia-n-snake-icon"&gt;<br>
+        &nbsp;&nbsp;/* 10个蛇段组成N形状 */<br>
+        &nbsp;&nbsp;&lt;div class="snake-segment segment-tail n-left-1"&gt;&lt;/div&gt;<br>
+        &nbsp;&nbsp;/* ... 更多段 ... */<br>
+        &lt;/div&gt;
+    </div>
+</body>
+</html>

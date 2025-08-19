@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Game Data - NOKIA*SNAKC_2077</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00fff0;
+            text-align: center;
+            padding: 50px;
+        }
+        .success {
+            color: #10b981;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .info {
+            color: #a1a1aa;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🗑️ Clear Game Data</h1>
+    <div id="status">Clearing data...</div>
+    
+    <script>
+        // Clear all game-related localStorage data
+        const keys = [
+            'cyber-snake-player-stats',
+            'cyber-snake-leaderboard', 
+            'cyber-snake-name',
+            'cyber-snake-best'
+        ];
+        
+        let clearedCount = 0;
+        keys.forEach(key => {
+            if (localStorage.getItem(key) !== null) {
+                localStorage.removeItem(key);
+                clearedCount++;
+            }
+        });
+        
+        const statusDiv = document.getElementById('status');
+        if (clearedCount > 0) {
+            statusDiv.innerHTML = `
+                <div class="success">✅ Game data cleared successfully!</div>
+                <div class="info">Cleared ${clearedCount} data entries</div>
+                <div class="info">You can now close this tab and delete this file</div>
+            `;
+        } else {
+            statusDiv.innerHTML = `
+                <div class="success">✅ No game data found</div>
+                <div class="info">localStorage was already clean</div>
+            `;
+        }
+        
+        console.log('Game data clearing completed');
+    </script>
+</body>
+</html>

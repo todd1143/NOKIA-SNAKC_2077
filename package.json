@@ -1,0 +1,39 @@
+{
+  "name": "nokia-snakc-2077",
+  "version": "1.0.0",
+  "description": "A cyberpunk-styled Snake game with neon effects and procedural music",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 3000",
+    "dev": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server"
+  },
+  "keywords": [
+    "snake-game",
+    "cyberpunk",
+    "neon",
+    "javascript",
+    "html5-canvas",
+    "web-audio-api",
+    "leaderboard",
+    "browser-game"
+  ],
+  "author": "Todd",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/nokia-snakc-2077.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/nokia-snakc-2077/issues"
+  },
+  "homepage": "https://github.com/your-username/nokia-snakc-2077#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
