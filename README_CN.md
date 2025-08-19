@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🐍 NOKIA*SNAKC_2077
+# 🐍 NOKIA*SNACK_2077
 
 <img src="https://img.shields.io/badge/React-18.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
 <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
