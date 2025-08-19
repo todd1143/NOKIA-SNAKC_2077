@@ -18,7 +18,7 @@
 ---
 
 ## ✨ Features
-
+assets/images/screenshots/ScreenRecording2025-08-20at2.12.31AM-ezgif.com-video-to-gif-converter.gif
 ### 🎨 **Cyberpunk Visuals**
 - **Flowing Neon Title** - Dynamic light strip effect mimicking snake movement
 - **Gradient Neon Effects** - Multi-layered glow with animated color transitions
