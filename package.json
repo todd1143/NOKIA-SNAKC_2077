@@ -1,6 +1,6 @@
 {
-  "name": "nokia-snakc-2077",
-  "version": "1.0.0",
+  "name": "nokia-snake-2077",
+  "version": "1.1.0",
   "description": "A cyberpunk-styled Snake game with neon effects and procedural music",
   "main": "index.html",
   "scripts": {
@@ -22,12 +22,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/nokia-snakc-2077.git"
+    "url": "https://github.com/todd1143/nokia-snake-2077.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/nokia-snakc-2077/issues"
+    "url": "https://github.com/todd1143/nokia-snake-2077/issues"
   },
-  "homepage": "https://github.com/your-username/nokia-snakc-2077#readme",
+  "homepage": "https://nokia-snake2077.replit.app/",
   "engines": {
     "node": ">=14.0.0"
   },

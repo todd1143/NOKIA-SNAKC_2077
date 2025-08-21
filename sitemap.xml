@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- Main Game Page -->
+    <url>
+        <loc>https://nokia-snake2077.replit.app/</loc>
+        <lastmod>2024-08-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://nokia-snake2077.replit.app/assets/images/screenshots/social-preview.jpg</image:loc>
+            <image:title>NOKIA*SNAKE_2077 - Cyberpunk Snake Game Screenshot</image:title>
+            <image:caption>Classic Nokia Snake game reimagined with cyberpunk neon graphics and modern browser gameplay</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://nokia-snake2077.replit.app/assets/images/screenshots/ScreenRecording2025-08-20at2.12.31AM-ezgif.com-video-to-gif-converter.gif</image:loc>
+            <image:title>NOKIA*SNAKE_2077 Gameplay Demo</image:title>
+            <image:caption>Live gameplay footage showing the neon snake game in action with cyberpunk aesthetics</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Game Assets and Images -->
+    <url>
+        <loc>https://nokia-snake2077.replit.app/assets/images/icons/android-chrome-192x192.png</loc>
+        <lastmod>2024-08-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <url>
+        <loc>https://nokia-snake2077.replit.app/assets/images/icons/android-chrome-512x512.png</loc>
+        <lastmod>2024-08-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <url>
+        <loc>https://nokia-snake2077.replit.app/assets/images/icons/apple-touch-icon-180x180.png</loc>
+        <lastmod>2024-08-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- Game Scripts and Resources -->
+    <url>
+        <loc>https://nokia-snake2077.replit.app/leaderboard.js</loc>
+        <lastmod>2024-08-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+</urlset>

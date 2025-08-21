@@ -3,172 +3,1029 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - NOKIA*SNAKC_2077</title>
+    <title>NOKIA*SNAKE_2077 - Admin Panel | Game Data Management</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Admin panel for NOKIA*SNAKE_2077 cyberpunk Snake game. Manage leaderboards, view statistics, and export game data.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Todd">
+    
+    <!-- Prevent indexing of admin pages -->
+    <link rel="canonical" href="https://todd1143.github.io/NOKIA-SNAKE_2077/admin.html">
     <style>
+        :root {
+            --neon-cyan: #00fff0;
+            --neon-pink: #ff00b8;
+            --neon-purple: #b400ff;
+            --dark-bg: #0a0a0a;
+            --card-bg: #111111;
+            --border-dark: #1a1a1a;
+            --text-dim: #666666;
+            --warning-red: #ff3366;
+            --success-green: #00ff88;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
         body {
-            font-family: 'Courier New', monospace;
-            background: #0a0a0a;
-            color: #00fff0;
-            padding: 20px;
+            font-family: 'Orbitron', 'Courier New', monospace;
+            background: var(--dark-bg);
+            color: var(--neon-cyan);
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #111;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #00fff0;
+
+        /* Cyberpunk Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(0, 255, 240, 0.03) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255, 0, 184, 0.02) 50%, transparent 70%);
+            animation: cyberScan 20s linear infinite;
+            z-index: -1;
+            pointer-events: none;
         }
-        .data-section {
-            margin: 20px 0;
-            padding: 15px;
-            background: #1a1a1a;
-            border-radius: 5px;
-            border-left: 3px solid #00fff0;
+
+        @keyframes cyberScan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
-        .key {
-            color: #ff00b8;
-            font-weight: bold;
+
+        /* Scanline Effect */
+        .scanlines::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 240, 0.05) 2px,
+                rgba(0, 255, 240, 0.05) 4px
+            );
+            pointer-events: none;
         }
-        .value {
-            color: #00fff0;
+
+        /* Login Screen */
+        #loginScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
         }
-        button {
-            background: #1a0a2a;
-            color: #00fff0;
-            border: 1px solid #00fff0;
-            padding: 10px 20px;
-            border-radius: 5px;
+
+        .login-container {
+            position: relative;
+            background: rgba(17, 17, 17, 0.9);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 240, 0.3),
+                inset 0 0 30px rgba(0, 255, 240, 0.1);
+            min-width: 400px;
+            text-align: center;
+        }
+
+        .login-title {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--neon-cyan);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan); }
+            to { text-shadow: 0 0 30px var(--neon-cyan), 0 0 60px var(--neon-cyan); }
+        }
+
+        .login-subtitle {
+            color: var(--neon-pink);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .input-field {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--neon-cyan);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255, 0, 184, 0.5);
+        }
+
+        .btn-login {
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+            border: none;
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            color: white;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
-            margin: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        button:hover {
-            background: #2a1a3a;
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(180, 0, 255, 0.4);
         }
-        .warning {
-            color: #ff6b6b;
-            background: #2a1a1a;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
+
+        .login-error {
+            color: var(--warning-red);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .login-error.show {
+            opacity: 1;
+            animation: glitch 0.3s ease-in-out;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            60% { transform: translateX(-2px); }
+            80% { transform: translateX(2px); }
+        }
+
+        /* Main Dashboard */
+        #dashboard {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-title {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 240, 0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-subtitle {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+
+        /* Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .cyber-card {
+            background: rgba(17, 17, 17, 0.8);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 15px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2);
+            border-color: var(--neon-pink);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Metrics Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .metric-item {
+            background: rgba(26, 26, 26, 0.6);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-dark);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .metric-item:hover {
+            border-color: var(--neon-pink);
+            transform: scale(1.05);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+            animation: counterGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes counterGlow {
+            0%, 100% { text-shadow: 0 0 10px var(--neon-cyan); }
+            50% { text-shadow: 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan); }
+        }
+
+        .metric-label {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* Data Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .data-table th {
+            background: rgba(26, 26, 26, 0.8);
+            color: var(--neon-pink);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        .data-table tr:hover {
+            background: rgba(0, 255, 240, 0.1);
+        }
+
+        .rank-badge {
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            height: 200px;
+            background: rgba(26, 26, 26, 0.6);
+            border-radius: 10px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-placeholder {
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Buttons */
+        .cyber-btn {
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            color: var(--dark-bg);
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        .cyber-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 240, 0.4);
+        }
+
+        .cyber-btn.danger {
+            background: linear-gradient(45deg, var(--warning-red), #ff6666);
+        }
+
+        .cyber-btn.danger:hover {
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+        }
+
+        .cyber-btn.secondary {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+        }
+
+        /* Warning Alert */
+        .cyber-alert {
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid var(--warning-red);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: var(--warning-red);
+        }
+
+        .cyber-alert .alert-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--border-dark);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+            transition: width 0.3s ease;
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .status-indicator.online {
+            background: var(--success-green);
+            box-shadow: 0 0 10px var(--success-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(17, 17, 17, 0.9);
+            border: 1px solid var(--neon-pink);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            color: var(--neon-pink);
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logout-btn:hover {
+            background: var(--neon-pink);
+            color: var(--dark-bg);
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dashboard-title {
+                font-size: 2rem;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .login-container {
+                min-width: 300px;
+                margin: 1rem;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard-title {
+                font-size: 1.5rem;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cyber-card {
+                padding: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-dark);
+            border-radius: 50%;
+            border-top-color: var(--neon-cyan);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>⚡ NOKIA*SNAKC_2077 - Admin Panel</h1>
-        
-        <div class="data-section">
-            <h2>📊 Player Statistics</h2>
-            <div id="playerStats">Loading...</div>
-        </div>
-
-        <div class="data-section">
-            <h2>🏆 Leaderboard Data</h2>
-            <div id="leaderboard">Loading...</div>
-        </div>
-
-        <div class="data-section">
-            <h2>👤 Player Profile</h2>
-            <div id="playerInfo">Loading...</div>
-        </div>
-
-        <div class="data-section">
-            <h2>🔧 Data Management</h2>
-            <button onclick="exportData()">📤 Export Data</button>
-            <button onclick="clearAllData()" style="background: #2a0a0a; border-color: #ff6b6b; color: #ff6b6b;">🗑️ Clear All Data</button>
-            <div class="warning">
-                ⚠️ Warning: Data cannot be recovered after deletion! Please export backup first.
-            </div>
-        </div>
-
-        <div class="data-section">
-            <h2>💾 Storage Information</h2>
-            <p>Your game data is stored in:</p>
-            <ul>
-                <li><span class="key">Location:</span> Browser localStorage</li>
-                <li><span class="key">Persistence:</span> Permanent unless manually cleared</li>
-                <li><span class="key">Scope:</span> Current browser and device only</li>
-                <li><span class="key">Size:</span> Approximately <span id="dataSize">Calculating...</span></li>
-            </ul>
+<body class="scanlines">
+    <!-- Login Screen -->
+    <div id="loginScreen">
+        <div class="login-container">
+            <h1 class="login-title">CYBER ADMIN</h1>
+            <p class="login-subtitle">NOKIA*SNAKE_2077 Administrative Interface</p>
+            <form class="login-form" id="loginForm">
+                <input 
+                    type="password" 
+                    class="input-field" 
+                    id="adminPassword" 
+                    placeholder="Enter Admin Password"
+                    maxlength="50"
+                >
+                <button type="submit" class="btn-login">ACCESS GRANTED</button>
+                <div class="login-error" id="loginError">ACCESS DENIED - Invalid Credentials</div>
+            </form>
         </div>
     </div>
 
+    <!-- Main Dashboard -->
+    <div id="dashboard">
+        <button class="logout-btn" onclick="logout()">LOGOUT</button>
+        
+        <header class="dashboard-header">
+            <h1 class="dashboard-title">CYBER ADMIN</h1>
+            <p class="dashboard-subtitle">
+                <span class="status-indicator online"></span>
+                NOKIA*SNAKE_2077 Administrative Control Panel
+            </p>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Executive Metrics -->
+            <div class="cyber-card">
+                <div class="card-title">Executive Metrics</div>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-value" id="totalPlayers">0</div>
+                        <div class="metric-label">Total Players</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value" id="totalGames">0</div>
+                        <div class="metric-label">Games Played</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value" id="highestScore">0</div>
+                        <div class="metric-label">Highest Score</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value" id="avgScore">0</div>
+                        <div class="metric-label">Average Score</div>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%;"></div>
+                </div>
+                <small style="color: var(--text-dim);">System Performance: 75%</small>
+            </div>
+
+            <!-- Player Analytics -->
+            <div class="cyber-card">
+                <div class="card-title">Player Analytics</div>
+                <div id="playerStatsDetail">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <span>Current Player:</span>
+                        <span id="currentPlayerName" style="color: var(--neon-pink);">Unknown</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <span>Personal Best:</span>
+                        <span id="personalBest" style="color: var(--neon-cyan);">0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <span>Global Rank:</span>
+                        <span id="globalRank" style="color: var(--neon-purple);">#--</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Session Stats:</span>
+                        <span id="sessionStats" style="color: var(--success-green);">Active</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-placeholder">Score Distribution Chart</div>
+                </div>
+            </div>
+
+            <!-- Leaderboard Management -->
+            <div class="cyber-card">
+                <div class="card-title">Leaderboard Management</div>
+                <div style="margin-bottom: 1rem;">
+                    <input 
+                        type="text" 
+                        class="input-field" 
+                        id="searchPlayer" 
+                        placeholder="Search players..."
+                        style="margin-bottom: 1rem; font-size: 0.9rem;"
+                    >
+                </div>
+                <div style="max-height: 300px; overflow-y: auto;">
+                    <table class="data-table" id="leaderboardTable">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Player</th>
+                                <th>Score</th>
+                                <th>Difficulty</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody">
+                            <tr>
+                                <td colspan="5" style="text-align: center; color: var(--text-dim);">
+                                    <span class="loading"></span> Loading data...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- System Administration -->
+            <div class="cyber-card">
+                <div class="card-title">System Administration</div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--neon-pink); margin-bottom: 0.5rem; font-size: 1rem;">Data Management</h3>
+                    <button class="cyber-btn secondary" onclick="exportData()">
+                        📤 Export Data
+                    </button>
+                    <button class="cyber-btn secondary" onclick="refreshData()">
+                        🔄 Refresh Data
+                    </button>
+                    <input 
+                        type="file" 
+                        id="importFile" 
+                        accept=".json"
+                        style="display: none;"
+                        onchange="importData(event)"
+                    >
+                    <button class="cyber-btn secondary" onclick="document.getElementById('importFile').click()">
+                        📥 Import Data
+                    </button>
+                </div>
+
+                <div class="cyber-alert">
+                    <div class="alert-title">
+                        ⚠️ DANGER ZONE
+                    </div>
+                    <p style="margin-bottom: 1rem;">The following action will permanently delete all game data.</p>
+                    <button class="cyber-btn danger" onclick="clearAllData()">
+                        🗑️ Purge All Data
+                    </button>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <h3 style="color: var(--neon-cyan); margin-bottom: 0.5rem; font-size: 1rem;">Storage Information</h3>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Location:</span>
+                        <span style="color: var(--text-dim);">Browser localStorage</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Data Size:</span>
+                        <span id="dataSize" style="color: var(--neon-cyan);">Calculating...</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Last Updated:</span>
+                        <span id="lastUpdated" style="color: var(--text-dim);">--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import LeaderboardManager -->
+    <script src="leaderboard.js"></script>
+    
     <script>
-        // Load game data
-        function loadGameData() {
-            // Player statistics
-            const playerStats = JSON.parse(localStorage.getItem('cyber-snake-player-stats') || '{"gamesPlayed":0,"totalScore":0,"avgScore":0}');
-            document.getElementById('playerStats').innerHTML = `
-                <div><span class="key">Games Played:</span><span class="value">${playerStats.gamesPlayed}</span></div>
-                <div><span class="key">Total Score:</span><span class="value">${playerStats.totalScore}</span></div>
-                <div><span class="key">Average Score:</span><span class="value">${playerStats.avgScore}</span></div>
-            `;
+        // Application State
+        let isAuthenticated = false;
+        let leaderboardManager;
+        let currentData = {};
 
-            // Leaderboard data
-            const leaderboard = JSON.parse(localStorage.getItem('cyber-snake-leaderboard') || '[]');
-            document.getElementById('leaderboard').innerHTML = `
-                <div><span class="key">Total Records:</span><span class="value">${leaderboard.length}</span></div>
-                <div><span class="key">Highest Score:</span><span class="value">${leaderboard.length > 0 ? Math.max(...leaderboard.map(l => l.score)) : 0}</span></div>
-            `;
+        // Admin Configuration
+        const ADMIN_PASSWORD = 'snake2077'; // Simple password for demo
+        const AUTO_REFRESH_INTERVAL = 30000; // 30 seconds
+        let refreshInterval;
 
-            // Player profile
-            const playerName = localStorage.getItem('cyber-snake-name') || 'Player';
-            const bestScore = localStorage.getItem('cyber-snake-best') || '0';
-            document.getElementById('playerInfo').innerHTML = `
-                <div><span class="key">Player Name:</span><span class="value">${playerName}</span></div>
-                <div><span class="key">Personal Best:</span><span class="value">${bestScore}</span></div>
-            `;
-
-            // Calculate data size
-            const allData = {
-                playerStats,
-                leaderboard,
-                playerName,
-                bestScore
-            };
-            const dataSize = new Blob([JSON.stringify(allData)]).size;
-            document.getElementById('dataSize').textContent = `${dataSize} bytes`;
+        // Authentication System
+        function authenticate(password) {
+            return password === ADMIN_PASSWORD;
         }
 
-        function exportData() {
-            const allData = {
-                playerStats: JSON.parse(localStorage.getItem('cyber-snake-player-stats') || '{}'),
-                leaderboard: JSON.parse(localStorage.getItem('cyber-snake-leaderboard') || '[]'),
-                playerName: localStorage.getItem('cyber-snake-name'),
-                bestScore: localStorage.getItem('cyber-snake-best'),
-                exportDate: new Date().toISOString()
-            };
+        function showLoginError() {
+            const errorEl = document.getElementById('loginError');
+            errorEl.classList.add('show');
+            setTimeout(() => {
+                errorEl.classList.remove('show');
+            }, 3000);
+        }
 
-            const dataStr = JSON.stringify(allData, null, 2);
-            const dataBlob = new Blob([dataStr], {type: 'application/json'});
-            const url = URL.createObjectURL(dataBlob);
+        function login(password) {
+            if (authenticate(password)) {
+                isAuthenticated = true;
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                initializeDashboard();
+                return true;
+            } else {
+                showLoginError();
+                return false;
+            }
+        }
+
+        function logout() {
+            isAuthenticated = false;
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+            }
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('adminPassword').value = '';
+        }
+
+        // Dashboard Initialization
+        function initializeDashboard() {
+            leaderboardManager = window.LeaderboardManager;
+            loadDashboardData();
             
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `nokia-snakc-2077-backup-${new Date().toISOString().split('T')[0]}.json`;
-            link.click();
+            // Set up auto-refresh
+            refreshInterval = setInterval(loadDashboardData, AUTO_REFRESH_INTERVAL);
             
-            URL.revokeObjectURL(url);
-            alert('Data exported successfully!');
+            // Set up search functionality
+            document.getElementById('searchPlayer').addEventListener('input', filterLeaderboard);
+        }
+
+        // Data Loading Functions
+        function loadDashboardData() {
+            try {
+                if (!leaderboardManager) return;
+                
+                const stats = leaderboardManager.getStatsSummary();
+                const leaderboard = leaderboardManager.getLeaderboard(50);
+                const playerStats = leaderboardManager.getPlayerStats();
+                
+                currentData = { stats, leaderboard, playerStats };
+                
+                updateExecutiveMetrics(stats);
+                updatePlayerAnalytics(stats);
+                updateLeaderboardTable(leaderboard);
+                updateStorageInfo();
+                updateLastUpdated();
+                
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+
+        function updateExecutiveMetrics(stats) {
+            animateCounter('totalPlayers', stats.totalPlayers);
+            animateCounter('totalGames', stats.totalGames);
+            animateCounter('highestScore', stats.highestScore);
+            
+            const avgScore = stats.totalGames > 0 ? Math.round(stats.leaderboard?.reduce((sum, entry) => sum + entry.score, 0) / stats.totalGames) : 0;
+            animateCounter('avgScore', avgScore);
+        }
+
+        function updatePlayerAnalytics(stats) {
+            const playerName = leaderboardManager.getPlayerName() || 'Unknown';
+            document.getElementById('currentPlayerName').textContent = playerName;
+            document.getElementById('personalBest').textContent = stats.playerBest.toLocaleString();
+            document.getElementById('globalRank').textContent = stats.playerRank ? `#${stats.playerRank}` : '#--';
+            
+            const sessionStatus = stats.playerStats.gamesPlayed > 0 ? 
+                `${stats.playerStats.gamesPlayed} games` : 'No activity';
+            document.getElementById('sessionStats').textContent = sessionStatus;
+        }
+
+        function updateLeaderboardTable(leaderboard) {
+            const tbody = document.getElementById('leaderboardBody');
+            if (leaderboard.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--text-dim);">
+                            No leaderboard data available
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = leaderboard.map((entry, index) => {
+                const rankBadge = index < 3 ? 
+                    `<span class="rank-badge">#${index + 1}</span>` : 
+                    `#${index + 1}`;
+                    
+                return `
+                    <tr>
+                        <td>${rankBadge}</td>
+                        <td style="color: var(--neon-pink);">${entry.name}</td>
+                        <td style="color: var(--neon-cyan);">${entry.score.toLocaleString()}</td>
+                        <td style="color: var(--neon-purple);">${entry.difficulty || 'N/A'}</td>
+                        <td style="color: var(--text-dim);">${entry.date || 'Unknown'}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function updateStorageInfo() {
+            try {
+                const allData = leaderboardManager.exportData();
+                const dataSize = new Blob([JSON.stringify(allData)]).size;
+                document.getElementById('dataSize').textContent = `${(dataSize / 1024).toFixed(2)} KB`;
+            } catch (error) {
+                document.getElementById('dataSize').textContent = 'Error calculating';
+            }
+        }
+
+        function updateLastUpdated() {
+            const now = new Date();
+            document.getElementById('lastUpdated').textContent = now.toLocaleTimeString();
+        }
+
+        // Animation Functions
+        function animateCounter(elementId, targetValue) {
+            const element = document.getElementById(elementId);
+            const currentValue = parseInt(element.textContent) || 0;
+            const increment = (targetValue - currentValue) / 20;
+            let current = currentValue;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if ((increment > 0 && current >= targetValue) || 
+                    (increment < 0 && current <= targetValue)) {
+                    element.textContent = targetValue.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.round(current).toLocaleString();
+                }
+            }, 50);
+        }
+
+        // Search and Filter Functions
+        function filterLeaderboard() {
+            const searchTerm = document.getElementById('searchPlayer').value.toLowerCase();
+            const tbody = document.getElementById('leaderboardBody');
+            const rows = tbody.querySelectorAll('tr');
+            
+            rows.forEach(row => {
+                const playerName = row.cells[1]?.textContent.toLowerCase() || '';
+                row.style.display = playerName.includes(searchTerm) ? '' : 'none';
+            });
+        }
+
+        // Data Management Functions
+        function exportData() {
+            try {
+                const allData = {
+                    ...leaderboardManager.exportData(),
+                    exportDate: new Date().toISOString(),
+                    exportedBy: 'CYBER_ADMIN',
+                    version: '2077.1.0'
+                };
+
+                const dataStr = JSON.stringify(allData, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(dataBlob);
+                
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `nokia-snake-2077-admin-backup-${new Date().toISOString().split('T')[0]}.json`;
+                link.click();
+                
+                URL.revokeObjectURL(url);
+                showNotification('Data exported successfully!', 'success');
+            } catch (error) {
+                console.error('Export error:', error);
+                showNotification('Failed to export data!', 'error');
+            }
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (confirm('This will replace all current data. Are you sure?')) {
+                        leaderboardManager.clearAllData();
+                        leaderboardManager.importData(data);
+                        loadDashboardData();
+                        showNotification('Data imported successfully!', 'success');
+                    }
+                } catch (error) {
+                    console.error('Import error:', error);
+                    showNotification('Failed to import data! Invalid file format.', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function refreshData() {
+            loadDashboardData();
+            showNotification('Data refreshed!', 'success');
         }
 
         function clearAllData() {
-            if (confirm('Are you sure you want to clear all game data? This action cannot be undone!')) {
-                if (confirm('Final confirmation: This will delete all your game records, statistics, and leaderboard data!')) {
-                    localStorage.removeItem('cyber-snake-player-stats');
-                    localStorage.removeItem('cyber-snake-leaderboard');
-                    localStorage.removeItem('cyber-snake-name');
-                    localStorage.removeItem('cyber-snake-best');
-                    alert('All data has been cleared!');
-                    loadGameData();
+            if (confirm('⚠️ CRITICAL WARNING ⚠️\n\nThis will permanently delete ALL game data including:\n• All leaderboard records\n• Player statistics\n• Personal bests\n• Player profiles\n\nThis action cannot be undone!\n\nType "DELETE ALL" to confirm:')) {
+                const confirmation = prompt('Type "DELETE ALL" to confirm:');
+                if (confirmation === 'DELETE ALL') {
+                    leaderboardManager.clearAllData();
+                    loadDashboardData();
+                    showNotification('All data has been purged!', 'error');
+                } else {
+                    showNotification('Data purge cancelled.', 'success');
                 }
             }
         }
 
-        // Load data on page load
-        loadGameData();
+        // Notification System
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${type === 'error' ? 'rgba(255, 51, 102, 0.9)' : 'rgba(0, 255, 240, 0.9)'};
+                color: var(--dark-bg);
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                font-family: inherit;
+                font-weight: 700;
+                z-index: 2000;
+                animation: slideDown 0.3s ease-out;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideUp 0.3s ease-in';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Event Listeners
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('adminPassword').value;
+            login(password);
+        });
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (!isAuthenticated) return;
+            
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'r':
+                        e.preventDefault();
+                        refreshData();
+                        break;
+                    case 'e':
+                        e.preventDefault();
+                        exportData();
+                        break;
+                    case '/':
+                        e.preventDefault();
+                        document.getElementById('searchPlayer').focus();
+                        break;
+                }
+            }
+            
+            if (e.key === 'Escape') {
+                document.getElementById('searchPlayer').value = '';
+                filterLeaderboard();
+            }
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-focus password field
+            document.getElementById('adminPassword').focus();
+            
+            // Add CSS animations for notifications
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideDown {
+                    from { transform: translate(-50%, -100%); opacity: 0; }
+                    to { transform: translate(-50%, 0); opacity: 1; }
+                }
+                @keyframes slideUp {
+                    from { transform: translate(-50%, 0); opacity: 1; }
+                    to { transform: translate(-50%, -100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        });
     </script>
 </body>
 </html>

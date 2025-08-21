@@ -1,19 +1,30 @@
 <div align="center">
 
-# 🐍 NOKIA*SNACK_2077
+# 🐍 NOKIA*SNAKE_2077 - Classic Nokia Snake Game Reimagined
 
 <img src="https://img.shields.io/badge/React-18.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
 <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
 <img src="https://img.shields.io/badge/Web_Audio_API-Procedural-FF6B6B?style=for-the-badge&logo=waveform&logoColor=white" />
 <img src="https://img.shields.io/badge/Canvas-HTML5-E34C26?style=for-the-badge&logo=html5&logoColor=white" />
+<img src="https://img.shields.io/badge/Nokia-Nostalgia-0066CC?style=for-the-badge&logo=nokia&logoColor=white" />
+<img src="https://img.shields.io/badge/Retro-Gaming-FF6B35?style=for-the-badge&logo=gamepad&logoColor=white" />
 
-### 🎮 A Cyberpunk Snake Game with Procedural Music & Neon Aesthetics
+### 🎮 The Ultimate Nostalgic Nokia Snake Game with Cyberpunk 2077 Aesthetics
+#### Experience Classic Mobile Gaming with Modern Browser Technology - Play Free Online Now!
 
-[Play Now](https://nokia-snack2077.replit.app) | [中文文档](README_CN.md) | [Report Bug](https://github.com/todd1143/NOKIA-SNACK_2077/issues) | [Request Feature](https://github.com/todd1143/NOKIA-SNACK_2077/issues)
+[Play Now](https://nokia-snake2077.replit.app) | [中文文档](README_CN.md) | [Report Bug](https://github.com/todd1143/NOKIA-SNAKE_2077/issues) | [Request Feature](https://github.com/todd1143/NOKIA-SNAKE_2077/issues)
 
-<img src="assets/images/screenshots/ScreenRecording2025-08-20at2.12.31AM-ezgif.com-video-to-gif-converter.gif" width="600" alt="Game Demo" />
+<img src="assets/images/screenshots/screen-record.gif" width="600" alt="Game Demo" />
 
 </div>
+
+---
+
+## 🔍 What Makes This Special?
+
+**NOKIA*SNAKE_2077** perfectly captures the **nostalgic Nokia phone gaming experience** that defined a generation while bringing it into the modern era with stunning **cyberpunk 2077 aesthetics**. Whether you remember playing Snake on your classic Nokia 3310, Nokia 6600, or any other iconic Nokia mobile phone, this **retro browser game** will transport you back to those simpler times.
+
+**Keywords:** Nokia Snake game, retro snake game, nostalgic mobile games, Nokia phone games, classic arcade games, browser games 2077, HTML5 snake game, cyberpunk games, neon snake game, vintage gaming
 
 ---
 
@@ -54,14 +65,14 @@
 # Fork this repository
 # Go to Settings > Pages
 # Select "Deploy from branch" > main > / (root)
-# Your game will be live at https://[username].github.io/NOKIA-SNACK_2077
+# Your game will be live at https://nokia-snake2077.replit.app
 ```
 
 ### **Option 2: Local Development**
 ```bash
 # Clone the repository
-git clone https://github.com/todd1143/NOKIA-SNACK_2077.git
-cd NOKIA-SNACK_2077
+git clone https://github.com/todd1143/NOKIA-SNAKE_2077.git
+cd NOKIA-SNAKE_2077
 
 # Start with Python (no dependencies needed!)
 python3 -m http.server 8000
@@ -75,7 +86,7 @@ open http://localhost:8000
 ```
 
 ### **Option 3: Deploy to Replit**
-[![Run on Replit](https://replit.com/badge/github/todd1143/NOKIA-SNACK_2077)](https://replit.com/github/todd1143/NOKIA-SNACK_2077)
+[![Run on Replit](https://replit.com/badge/github/todd1143/NOKIA-SNAKE_2077)](https://replit.com/github/todd1143/NOKIA-SNAKE_2077)
 
 ---
 
@@ -132,7 +143,7 @@ graph TD
 ## 📁 Project Structure
 
 ```
-nokia-snakc-2077/
+nokia-snake-2077/
 ├── 🎮 index.html          # Main game (React component + game logic)
 ├── 💾 leaderboard.js      # Data management module
 ├── 🔧 admin.html          # Admin panel for data management
@@ -157,7 +168,7 @@ nokia-snakc-2077/
 Edit these values in `index.html`:
 
 ```javascript
-const GAME_TITLE = "NOKIA*SNAKC_2077";  // Game title
+const GAME_TITLE = "NOKIA*SNAKE_2077";  // Game title
 const GRID = 24;                        // Grid size (24x24)
 const DEFAULT_TPS = 8;                  // Default speed
 const MAX_TPS = 16;                     // Maximum speed
@@ -296,7 +307,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 **Todd** - [GitHub Profile](https://github.com/todd1143)
 
-Project Link: [https://github.com/todd1143/NOKIA-SNACK_2077](https://github.com/todd1143/NOKIA-SNACK_2077)
+Project Link: [https://github.com/todd1143/NOKIA-SNAKE_2077](https://github.com/todd1143/NOKIA-SNAKE_2077)
 
 ---
 
@@ -304,9 +315,9 @@ Project Link: [https://github.com/todd1143/NOKIA-SNACK_2077](https://github.com/
 
 ### 🌟 Star this repo if you enjoyed the game!
 
-<img src="https://img.shields.io/github/stars/todd1143/NOKIA-SNACK_2077?style=social" />
-<img src="https://img.shields.io/github/forks/todd1143/NOKIA-SNACK_2077?style=social" />
-<img src="https://img.shields.io/github/watchers/todd1143/NOKIA-SNACK_2077?style=social" />
+<img src="https://img.shields.io/github/stars/todd1143/NOKIA-SNAKE_2077?style=social" />
+<img src="https://img.shields.io/github/forks/todd1143/NOKIA-SNAKE_2077?style=social" />
+<img src="https://img.shields.io/github/watchers/todd1143/NOKIA-SNAKE_2077?style=social" />
 
 **Made with 💜 and ⚡ by Todd**
 

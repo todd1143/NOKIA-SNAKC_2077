@@ -1,5 +1,5 @@
 /**
- * NOKIA*SNAKC_2077 - Leaderboard Data Management
+ * NOKIA*SNAKE_2077 - Leaderboard Data Management
  * Leaderboard data management system
  */
 
@@ -134,7 +134,7 @@ class LeaderboardManager {
    * @returns {string} 玩家名稱
    */
   getPlayerName() {
-    return localStorage.getItem(this.STORAGE_KEYS.PLAYER_NAME) || 'Player';
+    return localStorage.getItem(this.STORAGE_KEYS.PLAYER_NAME) || '';
   }
 
   /**

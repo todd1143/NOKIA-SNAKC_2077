@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Generator - NOKIA*SNAKE_2077</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00fff0;
+            padding: 20px;
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #555;
+            margin: 10px;
+            background: #0a0a0a;
+            border-radius: 8px;
+        }
+        button {
+            background: linear-gradient(135deg, #00fff0, #ff00b8);
+            color: #000;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 12px 24px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>🅝 Favicon Generator</h1>
+    
+    <!-- Blue Gradient Version -->
+    <div style="margin: 20px;">
+        <h3 style="color: #7bf7f3;">Blue Gradient</h3>
+        <canvas id="favicon16_blue" width="16" height="16"></canvas>
+        <canvas id="favicon32_blue" width="32" height="32"></canvas>
+        <br>
+        <button onclick="downloadSpecificFavicon('blue')">Download Blue favicon.ico</button>
+    </div>
+    
+    <!-- Purple Gradient Version -->
+    <div style="margin: 20px;">
+        <h3 style="color: #b400ff;">Purple Gradient</h3>
+        <canvas id="favicon16_purple" width="16" height="16"></canvas>
+        <canvas id="favicon32_purple" width="32" height="32"></canvas>
+        <br>
+        <button onclick="downloadSpecificFavicon('purple')">Download Purple favicon.ico</button>
+    </div>
+    
+    <!-- Green Gradient Version -->
+    <div style="margin: 20px;">
+        <h3 style="color: #00ff88;">Green Gradient</h3>
+        <canvas id="favicon16_green" width="16" height="16"></canvas>
+        <canvas id="favicon32_green" width="32" height="32"></canvas>
+        <br>
+        <button onclick="downloadSpecificFavicon('green')">Download Green favicon.ico</button>
+    </div>
+    
+    <script>
+        function roundRect(ctx, x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y, x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x, y + h, r);
+            ctx.arcTo(x, y + h, x, y, r);
+            ctx.arcTo(x, y, x + w, y, r);
+            ctx.closePath();
+        }
+        
+        function neonRect(ctx, x, y, w, h, color1, color2, strokeColor) {
+            const r = Math.min(w, h) * 0.25;
+            
+            // 创建线性渐变
+            const gradient = ctx.createLinearGradient(x, y, x + w, y + h);
+            gradient.addColorStop(0, color1);
+            gradient.addColorStop(1, color2);
+            
+            ctx.fillStyle = gradient;
+            ctx.shadowColor = color2;
+            ctx.shadowBlur = 4;
+            roundRect(ctx, x, y, w, h, r);
+            ctx.fill();
+            
+            // 绘制线条边框
+            if (strokeColor) {
+                ctx.strokeStyle = strokeColor;
+                ctx.lineWidth = 1;
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = strokeColor;
+                roundRect(ctx, x, y, w, h, r);
+                ctx.stroke();
+            }
+        }
+        
+        function drawSnakeHead(canvas, theme) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            
+            // 清空画布 - 黑色背景
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, size, size);
+            
+            // 计算蛇头大小和位置
+            const headSize = size * 0.6;
+            const x = (size - headSize) / 2;
+            const y = (size - headSize) / 2;
+            
+            // 定义不同主题的颜色
+            const themes = {
+                blue: {
+                    color1: '#7bf7f3',
+                    color2: '#c5fdfa', 
+                    stroke: '#5ab8f7'
+                },
+                purple: {
+                    color1: '#b400ff',
+                    color2: '#ff00b8',
+                    stroke: '#8a2be2'
+                },
+                green: {
+                    color1: '#00ff88',
+                    color2: '#88ffaa',
+                    stroke: '#00cc66'
+                }
+            };
+            
+            const currentTheme = themes[theme] || themes.purple;
+            
+            // 绘制蛇头 - 使用渐变和线条
+            neonRect(ctx, x, y, headSize, headSize, 
+                    currentTheme.color1, currentTheme.color2, currentTheme.stroke);
+            
+            // 绘制眼睛
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = 'rgba(0,0,0,0.6)';
+            const eyeWidth = headSize * 0.4;
+            const eyeHeight = headSize * 0.15;
+            const eyeX = x + headSize * 0.3;
+            const eyeY = y + headSize * 0.3;
+            ctx.fillRect(eyeX, eyeY, eyeWidth, eyeHeight);
+        }
+        
+        function generateFavicons() {
+            // 生成不同主题的favicon
+            drawSnakeHead(document.getElementById('favicon16_blue'), 'blue');
+            drawSnakeHead(document.getElementById('favicon32_blue'), 'blue');
+            
+            drawSnakeHead(document.getElementById('favicon16_purple'), 'purple');
+            drawSnakeHead(document.getElementById('favicon32_purple'), 'purple');
+            
+            drawSnakeHead(document.getElementById('favicon16_green'), 'green');
+            drawSnakeHead(document.getElementById('favicon32_green'), 'green');
+        }
+        
+        function downloadSpecificFavicon(theme) {
+            // 使用32x32的canvas来生成favicon
+            const canvas = document.getElementById(`favicon32_${theme}`);
+            const link = document.createElement('a');
+            link.download = `favicon-${theme}.ico`;
+            
+            // 转换为ICO格式（这里使用PNG，大多数浏览器支持）
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // 页面加载时生成favicon
+        window.onload = generateFavicons;
+    </script>
+</body>
+</html>

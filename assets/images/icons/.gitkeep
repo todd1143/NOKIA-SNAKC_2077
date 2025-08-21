@@ -1,0 +1,10 @@
+# Icons Directory
+
+This directory will contain game icons and favicons.
+
+Recommended icons:
+- favicon.ico (32x32)
+- apple-touch-icon.png (180x180)
+- android-chrome-192x192.png
+- android-chrome-512x512.png
+- game-logo.png (transparent background)

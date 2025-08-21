@@ -1,0 +1,55 @@
+# NOKIA*SNAKE_2077 - Cyberpunk Snake Game
+# Robots.txt for SEO optimization
+
+User-agent: *
+
+# Allow crawling of main game and assets
+Allow: /
+Allow: /index.html
+Allow: /assets/
+Allow: /assets/images/
+Allow: /assets/images/icons/
+Allow: /assets/images/screenshots/
+Allow: /leaderboard.js
+Allow: /sitemap.xml
+
+# Disallow admin and utility pages
+Disallow: /admin.html
+Disallow: /Tools/
+Disallow: /Tools/clear_data.html
+Disallow: /Tools/create_icons.html
+
+# Crawl delay (be respectful)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://todd1143.github.io/NOKIA-SNAKE_2077/sitemap.xml
+
+# Popular search engines
+User-agent: Googlebot
+Allow: /
+Disallow: /admin.html
+Disallow: /Tools/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin.html
+Disallow: /Tools/
+
+User-agent: Slurp
+Allow: /
+Disallow: /admin.html
+Disallow: /Tools/
+
+# Social media crawlers for rich previews
+User-agent: facebookexternalhit
+Allow: /
+Allow: /assets/images/screenshots/
+
+User-agent: Twitterbot
+Allow: /
+Allow: /assets/images/screenshots/
+
+User-agent: LinkedInBot
+Allow: /
+Allow: /assets/images/screenshots/

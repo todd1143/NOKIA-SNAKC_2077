@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🐍 NOKIA*SNACK_2077
+# 🐍 NOKIA*SNAKE_2077
 
 <img src="https://img.shields.io/badge/React-18.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
 <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
@@ -9,9 +9,9 @@
 
 ### 🎮 赛博朋克贪吃蛇游戏 - 程序化音乐与霓虹美学
 
-[立即游玩](https://nokia-snack2077.replit.app) | [English](README.md) | [报告问题](https://github.com/todd1143/NOKIA-SNACK_2077/issues) | [功能请求](https://github.com/todd1143/NOKIA-SNACK_2077/issues)
+[立即游玩](https://nokia-snake2077.replit.app) | [English](README.md) | [报告问题](https://github.com/todd1143/NOKIA-SNAKE_2077/issues) | [功能请求](https://github.com/todd1143/NOKIA-SNAKE_2077/issues)
 
-<img src="assets/images/screenshots/ScreenRecording2025-08-20at2.12.31AM-ezgif.com-video-to-gif-converter.gif" width="600" alt="游戏演示" />
+<img src="assets/images/screenshots/screen-record.gif" width="600" alt="游戏演示" />
 
 </div>
 
@@ -54,14 +54,14 @@
 # Fork这个仓库
 # 进入Settings > Pages
 # 选择"Deploy from branch" > main > / (root)
-# 你的游戏将在 https://[用户名].github.io/NOKIA-SNACK_2077 上线
+# 你的游戏将在 https://[用户名].github.io/NOKIA-SNAKE_2077 上线
 ```
 
 ### **方式2：本地开发**
 ```bash
 # 克隆仓库
-git clone https://github.com/todd1143/NOKIA-SNACK_2077.git
-cd NOKIA-SNACK_2077
+git clone https://github.com/todd1143/NOKIA-SNAKE_2077.git
+cd NOKIA-SNAKE_2077
 
 # 使用Python启动（无需安装依赖！）
 python3 -m http.server 8000
@@ -75,7 +75,7 @@ open http://localhost:8000
 ```
 
 ### **方式3：部署到Replit**
-[![在Replit运行](https://replit.com/badge/github/todd1143/NOKIA-SNACK_2077)](https://replit.com/github/todd1143/NOKIA-SNACK_2077)
+[![在Replit运行](https://replit.com/badge/github/todd1143/NOKIA-SNAKE_2077)](https://replit.com/github/todd1143/NOKIA-SNAKE_2077)
 
 ---
 
@@ -132,8 +132,8 @@ graph TD
 ## 📁 项目结构
 
 ```
-nokia-snakc-2077/
-├── 🎮 index.html          # 主游戏（React组件+游戏逻辑）
+nokia-snake-2077/
+├── 🎮 index.html          # 主游戏 (React组件 + 游戏逻辑)
 ├── 💾 leaderboard.js      # 数据管理模块
 ├── 🔧 admin.html          # 数据管理的管理面板
 ├── 📝 README.md           # 英文文档
@@ -157,7 +157,7 @@ nokia-snakc-2077/
 在`index.html`中编辑这些值：
 
 ```javascript
-const GAME_TITLE = "NOKIA*SNAKC_2077";  // 游戏标题
+const GAME_TITLE = "NOKIA*SNAKE_2077";  // 游戏标题
 const GRID = 24;                        // 网格大小（24x24）
 const DEFAULT_TPS = 8;                  // 默认速度
 const MAX_TPS = 16;                     // 最大速度
@@ -296,7 +296,7 @@ LeaderboardManager.clearLeaderboard();
 
 **Todd** - [GitHub主页](https://github.com/todd1143)
 
-项目链接：[https://github.com/todd1143/NOKIA-SNACK_2077](https://github.com/todd1143/NOKIA-SNACK_2077)
+项目链接：[https://github.com/todd1143/NOKIA-SNAKE_2077](https://github.com/todd1143/NOKIA-SNAKE_2077)
 
 ---
 
@@ -304,9 +304,9 @@ LeaderboardManager.clearLeaderboard();
 
 ### 🌟 如果您喜欢这个游戏，请给这个仓库点星！
 
-<img src="https://img.shields.io/github/stars/todd1143/NOKIA-SNACK_2077?style=social" />
-<img src="https://img.shields.io/github/forks/todd1143/NOKIA-SNACK_2077?style=social" />
-<img src="https://img.shields.io/github/watchers/todd1143/NOKIA-SNACK_2077?style=social" />
+<img src="https://img.shields.io/github/stars/todd1143/NOKIA-SNAKE_2077?style=social" />
+<img src="https://img.shields.io/github/forks/todd1143/NOKIA-SNAKE_2077?style=social" />
+<img src="https://img.shields.io/github/watchers/todd1143/NOKIA-SNAKE_2077?style=social" />
 
 **用 💜 和 ⚡ 制作 by Todd**
 
